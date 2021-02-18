@@ -4,11 +4,11 @@ import {CustomTriangleUpButton,CustomTriangleDownButton} from '../CustomParts/Cu
 
 const Break = (props) => {
 	return (
-		<div style={{display:"flex",flexDirection:"column", justifyContent:"space-around", width:250, alignItems:"center"}}>
+		<div id="break-label" style={{display:"flex",flexDirection:"column", justifyContent:"space-around", width:250, alignItems:"center"}}>
 		<div style={{display:"flex", justifyContent:"space-around", width:250, alignItems:"center"}}>
-			<CustomTriangleUpButton/>
+			<CustomTriangleUpButton id={"break-increment"}/>
 			<CustomDisplay value={props.value}/>
-			<CustomTriangleDownButton/>
+			<CustomTriangleDownButton id={"break-decrement"}/>
 		</div>
 		<h3 style={{color:"white", fontSize:24}}>Break-Length</h3>
 		</div>

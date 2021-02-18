@@ -1,13 +1,13 @@
 import React from 'react'
 import "./CustomTriangleButton.css"
-export const CustomTriangleUpButton = () => {
+export const CustomTriangleUpButton = (props) => {
 	return (
-<i className="fas fa-caret-up fa-6x Triangle" ></i>
+<i className="fas fa-caret-up fa-5x Triangle" id={props.id}></i>
 	)
 }
 
-export const CustomTriangleDownButton = () => {
+export const CustomTriangleDownButton = (props) => {
 	return (
-<i className="fas fa-caret-down fa-6x Triangle"></i>
+<i className="fas fa-caret-down fa-5x Triangle" id={props.id}></i>
 	)
 }
