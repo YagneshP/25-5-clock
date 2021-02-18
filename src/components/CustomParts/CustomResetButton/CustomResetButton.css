@@ -7,6 +7,8 @@
   transform: rotate(45deg);
   top: 38px;
   right: 40px;
+	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
+	cursor: grab;
 }
 .CustomResetButton::before {
   content: "";
@@ -17,6 +19,7 @@
   position: absolute;
   top: 0px;
   right: -12.5px;
+	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
 }
 .CustomResetButton::after {
   content: "Reset";
