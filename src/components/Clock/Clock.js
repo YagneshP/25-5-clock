@@ -12,6 +12,7 @@ const Clock = () => {
     <div className="Clock">
       <CustomPlayButton />
 			<CustomResetButton/>
+			<h3 style={{color:"white", fontSize:"36px"}}>25:5 CLOCK</h3>
       <div style={{ display: "flex" }}>
         <Break value={5} />
         <Session value={25} />

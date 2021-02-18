@@ -18,3 +18,12 @@
   top: 0px;
   right: -12.5px;
 }
+
+.CustomPlayButton::after {
+  content: "Play/Pause";
+  color: #ffffff;
+  position: absolute;
+	font-size: larger;
+  bottom: -35px;
+  right: -25px;
+}

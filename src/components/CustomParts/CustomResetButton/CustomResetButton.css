@@ -18,3 +18,11 @@
   top: 0px;
   right: -12.5px;
 }
+.CustomResetButton::after {
+  content: "Reset";
+  color: #ffffff;
+  position: absolute;
+	font-size: larger;
+  bottom: -35px;
+  left: 0;
+}
