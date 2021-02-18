@@ -1,14 +1,14 @@
-.CustomPlayButton {
+.CustomResetButton {
   position: relative;
   position: absolute;
   height: 50px;
   width: 50px;
   background-color: rgb(213, 216, 56);
-  transform: rotate(315deg);
+  transform: rotate(45deg);
   top: 38px;
-  left: 40px;
+  right: 40px;
 }
-.CustomPlayButton::before {
+.CustomResetButton::before {
   content: "";
   width: 75px;
   height: 20px;
