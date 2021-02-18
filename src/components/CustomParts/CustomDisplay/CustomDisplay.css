@@ -1,0 +1,12 @@
+.CustomDisplay{
+	width:100px;
+	height:75px;
+	background-color: #939B72;
+	box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+	z-index:2;
+	font-size: 36px;
+	text-align: center;
+	box-sizing: border-box;
+	padding-top: 10px;
+}

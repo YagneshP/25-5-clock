@@ -3,4 +3,10 @@
 	height: 500px;
 	border-radius: 50%;
 	background-color: black;
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
