@@ -1,11 +1,7 @@
-import React from 'react'
-import "./CustomPlayButton.css"
+import React from "react";
+import "./CustomPlayButton.css";
 const CustomPlayButton = () => {
-	return (
-		<div className="CustomPlayButton">
-			
-		</div>
-	)
-}
+  return <div className="CustomPlayButton"></div>;
+};
 
-export default CustomPlayButton
+export default CustomPlayButton;

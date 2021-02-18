@@ -1,11 +1,7 @@
-import React from 'react'
-import "./CustomDisplay.css"
+import React from "react";
+import "./CustomDisplay.css";
 const CustomDisplay = (props) => {
-	return (
-		<div className="CustomDisplay">
-			{props.value}
-		</div>
-	)
-}
+  return <div className="CustomDisplay">{props.value}</div>;
+};
 
-export default CustomDisplay
+export default CustomDisplay;
