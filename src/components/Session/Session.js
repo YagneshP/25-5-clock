@@ -26,7 +26,7 @@ const Session = (props) => {
         }}
       >
         <CustomTriangleUpButton id={"session-increment"} />
-        <CustomDisplay value={props.value} />
+        <div style={{width:100}}><CustomDisplay value={props.value} /></div>
         <CustomTriangleDownButton id={"session-decrement"} />
       </div>
       <h3 style={{ color: "white", fontSize: 24 }}>Session-Length</h3>

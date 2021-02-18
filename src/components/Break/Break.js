@@ -26,7 +26,7 @@ const Break = (props) => {
         }}
       >
         <CustomTriangleUpButton id={"break-increment"} />
-        <CustomDisplay value={props.value} />
+        <div style={{width:100}}><CustomDisplay value={props.value}/></div>
         <CustomTriangleDownButton id={"break-decrement"} />
       </div>
       <h3 style={{ color: "white", fontSize: 24 }}>Break-Length</h3>
