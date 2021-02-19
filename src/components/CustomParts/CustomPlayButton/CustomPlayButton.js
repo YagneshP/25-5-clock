@@ -1,7 +1,10 @@
 import React from "react";
 import "./CustomPlayButton.css";
-const CustomPlayButton = () => {
-  return <div className="CustomPlayButton"></div>;
+import{ animated }from "react-spring"
+const CustomPlayButton = (props) => {
+  return(
+		<animated.div style={props.anime} className="CustomPlayButton"></animated.div>
+);
 };
 
 export default CustomPlayButton;

@@ -3,29 +3,45 @@
   position: absolute;
   height: 50px;
   width: 50px;
-  background-color: rgb(213, 216, 56);
+  background-color: rgb(213, 213, 213);
   transform: rotate(45deg);
   top: 38px;
   right: 40px;
 	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
 	cursor: grab;
+	z-index: 0;
 }
 .CustomResetButton::before {
-  content: "";
+  content: "\f01e";
+	font-family: "Font Awesome 5 Free";
+	text-align: center;
+	color: #252714;
+	font-size: 20px;
+	font-weight: bolder;
   width: 75px;
-  height: 20px;
-  background-color: darkgrey;
+  height: 30px;
+  background-color: #fdfdfd;
   border-radius: 5px;
   position: absolute;
   top: 0px;
   right: -12.5px;
 	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
+	box-sizing: border-box;
+	padding-top: 3px;
 }
-.CustomResetButton::after {
+/* .CustomResetButton::after {
   content: "Reset";
+	display: inline-block;
   color: #ffffff;
   position: absolute;
 	font-size: larger;
-  bottom: -35px;
+  bottom: -45px;
   left: 0;
+} */
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }

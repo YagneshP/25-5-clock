@@ -3,30 +3,54 @@
   position: absolute;
   height: 50px;
   width: 50px;
-  background-color: rgb(213, 216, 56);
+  background-color: rgb(213, 213, 213);
   transform: rotate(315deg);
   top: 38px;
   left: 40px;
 	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
 	cursor: grab;
 }
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
 .CustomPlayButton::before {
-  content: "";
+  content: "\f04b\f04c";
+	font-family: "Font Awesome 5 Free";
+	text-align: center;
+	color: #252714;
+	font-size: 20px;
+	font-weight: bold;
   width: 75px;
-  height: 20px;
-  background-color: darkgrey;
+  height: 30px;
+  background-color: #fdfdfd;
   border-radius: 5px;
   position: absolute;
   top: 0px;
   right: -12.5px;
 	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
+	box-sizing: border-box;
+	padding-top: 3px;
 }
-
+/* .icon::after {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
 .CustomPlayButton::after {
-  content: "Play/Pause";
+	content: "\f04b\f04c";
+	font-family: "Font Awesome 5 Free";
+  content: "";
   color: #ffffff;
   position: absolute;
+	font-weight: bold;
 	font-size: larger;
   bottom: -35px;
   right: -25px;
-}
+	right:5px;
+} */

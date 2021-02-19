@@ -1,10 +1,11 @@
 import React from 'react'
 import "./CustomResetButton.css"
-const CustomResetButton = () => {
+import{ animated }from "react-spring"
+const CustomResetButton = (props) => {
 	return (
-		<div className="CustomResetButton">
+		<animated.div  style={props.anime}className="CustomResetButton">
 			
-		</div>
+		</animated.div>
 	)
 }
 
