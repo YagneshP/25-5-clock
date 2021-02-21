@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomDisplay from "../CustomParts/CustomDisplay/CustomDisplay";
 import {
   CustomTriangleUpButton,
@@ -6,6 +6,17 @@ import {
 } from "../CustomParts/CustomTriangleButton/CustomTriangleButton";
 
 const Break = (props) => {
+	const{state, dispatch} = props
+const	handleIncrement= () =>{
+		if(state.break < 60){
+			dispatch({type:"incBreak"})
+		}
+	}
+	const	handleDecrement= () =>{
+		if(state.break > 1){
+			dispatch({type:"decBreak"})
+		}
+	}
   return (
     <div
       id="break-label"
@@ -25,9 +36,9 @@ const Break = (props) => {
           alignItems: "center",
         }}
       >
-        <CustomTriangleUpButton id={"break-increment"} />
-        <div style={{width:100}}><CustomDisplay value={props.value}/></div>
-        <CustomTriangleDownButton id={"break-decrement"} />
+        <CustomTriangleUpButton id={"break-increment"} handleIncrement={handleIncrement}/>
+        <div style={{width:100}}><CustomDisplay value={state.break}/></div>
+        <CustomTriangleDownButton handleDecrement={handleDecrement} id={"break-decrement"} />
       </div>
       <h3 style={{ color: "white", fontSize: 24 }}>Break-Length</h3>
     </div>
