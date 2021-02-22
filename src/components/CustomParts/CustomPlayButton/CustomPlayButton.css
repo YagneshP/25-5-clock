@@ -35,22 +35,3 @@
 	box-sizing: border-box;
 	padding-top: 3px;
 }
-/* .icon::after {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-}
-.CustomPlayButton::after {
-	content: "\f04b\f04c";
-	font-family: "Font Awesome 5 Free";
-  content: "";
-  color: #ffffff;
-  position: absolute;
-	font-weight: bold;
-	font-size: larger;
-  bottom: -35px;
-  right: -25px;
-	right:5px;
-} */

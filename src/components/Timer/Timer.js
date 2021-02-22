@@ -6,19 +6,30 @@ const Timer = (props) => {
 	const [session,setSession] = useState(props.session.session);
 	const [breakSession,setBreakSession] = useState(props.break.break);
 
+	//sessionRunning will be false after session complete
 useInterval(()=>{
 	setSessionRunning(!sessionRunning)
-}, 26 * 1000)
-const sessionInterval = useInterval(()=>{ 
-	setSession(session - 1)
-},1000)
-useEffect(()=>{
 	setSession(props.session.session)
-	console.log("new", props.session.session)
-	console.log("clearing session")
-	return () => clearInterval(sessionInterval)
-},[sessionRunning,props.session.session])
-console.log("sessionRun",sessionRunning);
+	setBreakSession(props.break.break)
+}, sessionRunning ? ((session+1) * 1000):((breakSession+1)* 1000),props.play)
+
+//assigning variable to interval this will substarct at every second
+useInterval(()=>{ 
+	if(sessionRunning){
+		setSession(session - 1);
+	}else{
+		setBreakSession(breakSession -1);
+	}
+},1000,props.play)
+
+//using effect to cancel interval
+// useEffect(()=>{
+
+// 	console.log("new", props.session.session)
+// 	console.log("clearing session")
+// 	return () => clearInterval(sessionInterval)
+// },[sessionRunning,props.session.session])
+
  return (
     <div style={{ display: "flex", flexDirection: "column",width: 300, textAlign:"center" }}>
       <CustomDisplay value={sessionRunning ? session : breakSession} />

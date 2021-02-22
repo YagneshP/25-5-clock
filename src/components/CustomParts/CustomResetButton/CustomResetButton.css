@@ -29,15 +29,7 @@
 	box-sizing: border-box;
 	padding-top: 3px;
 }
-/* .CustomResetButton::after {
-  content: "Reset";
-	display: inline-block;
-  color: #ffffff;
-  position: absolute;
-	font-size: larger;
-  bottom: -45px;
-  left: 0;
-} */
+
 .icon::before {
   display: inline-block;
   font-style: normal;

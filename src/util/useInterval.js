@@ -2,13 +2,13 @@ import React, { useState,useEffect,useRef} from "react";
 
 
 
-function useInterval(callback, delay,reset) {
+function useInterval(callback, delay,play) {
 	const savedCallback = useRef();
-	// const savedReset = useRef();
+	const savedPlay = useRef();
 	// Remember the latest callback.
 	useEffect(() => {
 		savedCallback.current = callback;
-		// savedReset.current = reset
+		savedPlay.current = play
 	}, [callback]);
 
 	// Set up the interval.
@@ -16,11 +16,12 @@ function useInterval(callback, delay,reset) {
 		function tick() {
 			savedCallback.current();
 		}
-		if (delay !== null ) {
+		console.log("playInEffect", play)
+		if (delay !== null && play) {
 			let id = setInterval(tick, delay);
 			return () => clearInterval(id);
 		}
-	}, [delay]);
+	}, [delay,play]);
 }
 
 export default useInterval;
