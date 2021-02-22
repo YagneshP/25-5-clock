@@ -15,7 +15,7 @@ const CustomPlayButton = (props) => {
 		// reset="true" 
 		 // ,
 		>
-		{props =><div style={animation ? props : null} onClick={handleClick} className="CustomPlayButton"></div>}
+		{props =><button style={animation ? props : null} onClick={handleClick} className="CustomPlayButton"></button>}
 		</Spring>
 );
 };

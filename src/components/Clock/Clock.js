@@ -7,6 +7,7 @@ import Timer from "../Timer/Timer";
 import "./Clock.css";
 const Clock = () => {
 const [ play, setPlay] = useState(false)
+const [reset, setReset] = useState(false)
   //breakReducer	
 let intialBreak = 5;
 function breakInit(intialBreak){
@@ -48,14 +49,14 @@ const[breakState,breakDispatch] =  useReducer(breakReducer, intialBreak, breakIn
 	const[sessionState,sessionDispatch] =  useReducer(sessionReducer, intialSession, sessionInit)
 	return (
     <div className="Clock">
-      <CustomPlayButton  play={play} setPlay={setPlay}/>
-			<CustomResetButton />
+      <CustomPlayButton  play={play} setPlay={setPlay} />
+			<CustomResetButton reset={reset} setReset={setReset} setPlay={setPlay} breakDispatch={breakDispatch} sessionDispatch={sessionDispatch} intialBreak={intialBreak} intialSession={intialSession}/>
 			<h3 style={{color:"white", fontSize:"36px"}}>25:5 CLOCK</h3>
       <div style={{ display: "flex" }}>
-        <Break state={breakState} dispatch = {breakDispatch}/>
-        <Session state={sessionState} dispatch={sessionDispatch}/>
+        <Break state={breakState} dispatch = {breakDispatch} play={play}/>
+        <Session state={sessionState} dispatch={sessionDispatch} play={play}/>
       </div>
-      <Timer break={breakState} session={sessionState} play={play}/>
+      <Timer break={breakState} session={sessionState} play={play} reset={reset}/>
     </div>
   );
 };

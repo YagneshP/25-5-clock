@@ -10,6 +10,8 @@
 	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
 	cursor: grab;
 	z-index: 0;
+	outline: none;
+	border:none;
 }
 .CustomResetButton::before {
   content: "\f01e";

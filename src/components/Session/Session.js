@@ -6,7 +6,7 @@ import {
 } from "../CustomParts/CustomTriangleButton/CustomTriangleButton";
 
 const Session = (props) => {
-const{state, dispatch} = props
+const{state, dispatch,play} = props
 	const	handleIncrement= () =>{
 			if(state.session < 60){
 				dispatch({type:"incSession"})
@@ -36,9 +36,9 @@ const{state, dispatch} = props
           alignItems: "center",
         }}
       >
-        <CustomTriangleUpButton id={"session-increment"} handleIncrement={handleIncrement}/>
+        <CustomTriangleUpButton id={"session-increment"} handleIncrement={handleIncrement} disabled={play}/>
         <div style={{width:100}}><CustomDisplay value={state.session} /></div>
-        <CustomTriangleDownButton id={"session-decrement"} handleDecrement={handleDecrement}/>
+        <CustomTriangleDownButton id={"session-decrement"} handleDecrement={handleDecrement} disabled={play}/>
       </div>
       <h3 style={{ color: "white", fontSize: 24 }}>Session-Length</h3>
     </div>

@@ -9,6 +9,8 @@
   left: 40px;
 	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
 	cursor: grab;
+	border:none;
+	outline: none;
 }
 .icon::before {
   display: inline-block;
