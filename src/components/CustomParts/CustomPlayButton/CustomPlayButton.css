@@ -7,10 +7,11 @@
   transform: rotate(315deg);
   top: 38px;
   left: 40px;
-	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
-	cursor: grab;
-	border:none;
-	outline: none;
+  box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),
+    inset -7px 0px 5px rgba(5, 4, 4, 0.25);
+  cursor: grab;
+  border: none;
+  outline: none;
 }
 .icon::before {
   display: inline-block;
@@ -21,11 +22,11 @@
 }
 .CustomPlayButton::before {
   content: "\f04b\f04c";
-	font-family: "Font Awesome 5 Free";
-	text-align: center;
-	color: #252714;
-	font-size: 20px;
-	font-weight: bold;
+  font-family: "Font Awesome 5 Free";
+  text-align: center;
+  color: #252714;
+  font-size: 20px;
+  font-weight: bold;
   width: 75px;
   height: 30px;
   background-color: #fdfdfd;
@@ -33,7 +34,8 @@
   position: absolute;
   top: 0px;
   right: -12.5px;
-	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
-	box-sizing: border-box;
-	padding-top: 3px;
+  box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),
+    inset -7px 0px 5px rgba(5, 4, 4, 0.25);
+  box-sizing: border-box;
+  padding-top: 3px;
 }

@@ -7,19 +7,20 @@
   transform: rotate(45deg);
   top: 38px;
   right: 40px;
-	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
-	cursor: grab;
-	z-index: 0;
-	outline: none;
-	border:none;
+  box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),
+    inset -7px 0px 5px rgba(5, 4, 4, 0.25);
+  cursor: grab;
+  z-index: 0;
+  outline: none;
+  border: none;
 }
 .CustomResetButton::before {
   content: "\f01e";
-	font-family: "Font Awesome 5 Free";
-	text-align: center;
-	color: #252714;
-	font-size: 20px;
-	font-weight: bolder;
+  font-family: "Font Awesome 5 Free";
+  text-align: center;
+  color: #252714;
+  font-size: 20px;
+  font-weight: bolder;
   width: 75px;
   height: 30px;
   background-color: #fdfdfd;
@@ -27,9 +28,10 @@
   position: absolute;
   top: 0px;
   right: -12.5px;
-	box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),inset -7px 0px 5px rgba(5, 4, 4, 0.25);
-	box-sizing: border-box;
-	padding-top: 3px;
+  box-shadow: inset 7px 0px 3px rgba(5, 4, 4, 0.25),
+    inset -7px 0px 5px rgba(5, 4, 4, 0.25);
+  box-sizing: border-box;
+  padding-top: 3px;
 }
 
 .icon::before {

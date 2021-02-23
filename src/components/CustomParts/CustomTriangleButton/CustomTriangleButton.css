@@ -1,11 +1,10 @@
 .Triangle {
   color: #f6ee1e;
-
 }
 
-.Button{
-	border:none;
-	background-color: black;
-	cursor: pointer;
-	outline: none;
+.Button {
+  border: none;
+  background-color: black;
+  cursor: pointer;
+  outline: none;
 }

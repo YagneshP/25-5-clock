@@ -18,28 +18,23 @@ useEffect(()=>{
 			}
 		
 },[props.reset,props.session.session, props.break.break])
-useEffect(() => {
-	if(sessionRunning){
-		setDisplaySession( secondsToTime(session))
-	}else{
-		setDisplayBreakSession( secondsToTime(breakSession))
-	}
 
-}, [session,breakSession,sessionRunning])
-	//sessionRunning will be false after session complete
 useInterval(()=>{
-	setSessionRunning(!sessionRunning)
-	setSession(props.session.session*60*1000)
+setSession(props.session.session*60*1000)
 	setBreakSession(props.break.break*60*1000)
 	audioRef.current.play()
-}, sessionRunning ? session:breakSession,props.play, props.reset)
-
+}, sessionRunning ? (session):(breakSession),props.play, props.reset)
+useInterval(()=>{
+	setSessionRunning(!sessionRunning)
+},[sessionRunning?session:breakSession,props.play,props.reset])
 //assigning variable to interval this will substarct at every second
 useInterval(()=>{ 
 	if(sessionRunning){
 		setSession(prevSes=> (prevSes-1000));
+		setDisplaySession( secondsToTime(session))
 	}else{
 		setBreakSession(brkSes =>(brkSes -1000));
+		setDisplayBreakSession( secondsToTime(breakSession))
 	}
 },1000,props.play,props.reset)
 
