@@ -6,7 +6,7 @@ const CustomResetButton = (props) => {
   const [animation, setAnimation] = useState(false);
   const handleClick = () => {
     setAnimation(!animation);
-    props.setReset(!props.reset);
+    props.setReset(true);
     props.setPlay(false);
     props.breakDispatch({ type: "resetBreak", payload: props.intialBreak });
     props.sessionDispatch({

@@ -55,7 +55,7 @@ const Clock = () => {
   );
   return (
     <div className="Clock">
-      <CustomPlayButton play={play} setPlay={setPlay} />
+      <CustomPlayButton play={play} setPlay={setPlay} setReset={setReset}/>
       <CustomResetButton
         reset={reset}
         setReset={setReset}

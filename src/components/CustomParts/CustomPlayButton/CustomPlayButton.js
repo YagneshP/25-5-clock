@@ -6,6 +6,7 @@ const CustomPlayButton = (props) => {
   const handleClick = () => {
     setAnimation(!animation);
     props.setPlay(!props.play);
+		props.setReset(false);
   };
   return (
     <Spring
