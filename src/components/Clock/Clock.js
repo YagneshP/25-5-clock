@@ -8,6 +8,7 @@ import "./Clock.css";
 const Clock = () => {
   const [play, setPlay] = useState(false);
   const [reset, setReset] = useState(false);
+	const [label, setLabel] = React.useState("Session")
   //breakReducer
   let intialBreak = 5;
   function breakInit(intialBreak) {
@@ -55,7 +56,7 @@ const Clock = () => {
   );
   return (
     <div className="Clock">
-      <CustomPlayButton play={play} setPlay={setPlay} setReset={setReset}/>
+      <CustomPlayButton play={play} setPlay={setPlay} setReset={setReset} id="start_stop"/>
       <CustomResetButton
         reset={reset}
         setReset={setReset}
@@ -64,6 +65,8 @@ const Clock = () => {
         sessionDispatch={sessionDispatch}
         intialBreak={intialBreak}
         intialSession={intialSession}
+				setLabel={setLabel}
+        id="reset"
       />
       <h3 style={{ color: "white", fontSize: "36px" }}>25:5 CLOCK</h3>
       <div style={{ display: "flex" }}>
@@ -75,6 +78,8 @@ const Clock = () => {
         session={sessionState}
         play={play}
         reset={reset}
+				label = {label}
+        setLabel = {setLabel}
       />
     </div>
   );

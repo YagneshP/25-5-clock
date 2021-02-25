@@ -1,53 +1,67 @@
 import React, { useState,useEffect,useRef, useReducer} from "react";
-import CustomDisplay from "../CustomParts/CustomDisplay/CustomDisplay";
+// import CustomDisplay from "../CustomParts/CustomDisplay/CustomDisplay";
 import useInterval from "../../util/useInterval"
 import {secondsToTime} from "../../util/settimer";
 const Timer = (props) => {
-const audioRef = useRef();
-const[sessionRunning, setSessionRunning] = useState(true)
-const[displaySession, setDisplaySession] = useState(null);
-const[displayBreak, setDisplayBreak] = useState(null);
-const[time, setTime] = useState(props.session.session*60*1000)
-
-useEffect(()=>{
-   setDisplaySession(props.session.session*60*1000)
-	 setDisplayBreak(props.break.break*60*1000);
-	 setTime(props.session.session*60*1000)
-	 setSessionRunning(true)
-	 			audioRef.current.pause()
-	 			audioRef.current.CurrentTime = 0
-},[props.session.session, props.break.break, props.reset])
-
-useInterval(()=>{
-	if(sessionRunning){
-		console.log("displaySession",displaySession)
-		setDisplaySession(displaySession - 1000)
-		setTime(displaySession)
-	} else{
-		console.log("displayBreak",displayBreak)
-		setDisplayBreak(prevBreak => (prevBreak - 1000))
-		setTime(displayBreak)
-	}
-
-}, 1000, props.play, sessionRunning)
-useInterval(()=>{
-
-audioRef.current.play()
-setSessionRunning(!sessionRunning)
-setDisplayBreak(props.break.break*60*1000)
-setDisplaySession(props.session.session*60*1000)
-}, secondsToTime(time) === "00:00" ? props.session.session*60*1000: props.break.break*60*1000, props.play, sessionRunning)
-
-let timeString = sessionRunning ? "Session" : "Break"
-
-return (
-    <div style={{ display: "flex", flexDirection: "column",width: 300, textAlign:"center" }}>
-			<div className="CustomDisplay" id="time-left">{secondsToTime(time)}</div>
-      <h3 style={{ color: "white", fontSize: 24 }} id="timer-label">{timeString}</h3>
-			<audio id="beep" ref={audioRef} ><source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"></source> </audio>
-    </div>
-  );
-};
+	const audioRef = React.useRef(null);
+	const[sessionRunning, setSessionRunning] = React.useState(true)
+	const[displaySession, setDisplaySession] = React.useState(null);
+	const[displayBreak, setDisplayBreak] = React.useState(null);
+	const[time, setTime] = React.useState(null)
+	
+	React.useEffect(()=>{
+		 setDisplaySession((props.session.session*60*1000))
+		 setDisplayBreak((props.break.break*60*1000));
+		
+		if(props.reset){
+		setSessionRunning(true)
+		setTime(props.session.session*60*1000)
+		audioRef.current.pause()
+		audioRef.current.currentTime = 0
+		}
+	},[props.session.session, props.break.break,props.reset])
+		
+	React.useEffect(()=>{
+	sessionRunning?setTime(displaySession):setTime(displayBreak)
+	},[displaySession,displayBreak,sessionRunning])
+		
+	React.useEffect(()=>{
+				sessionRunning? setTime(props.session.session*60*1000) : setTime(props.break.break*60*1000)
+				sessionRunning? props.setLabel("Session") : props.setLabel("Break")
+		},[sessionRunning])
+	
+	useInterval(()=>{
+	 if(sessionRunning === true && secondsToTime(time) !== "00:00" && props.play){
+			setDisplaySession(prevSes=> prevSes - 1000 )
+			setTime(displaySession) 
+		}
+	 else if(sessionRunning === false && secondsToTime(time) !== "00:00" && !props.reset){
+			setDisplayBreak(prevBreak=> prevBreak - 1000)
+			setTime(displayBreak)
+		}
+	}, props.play ? 1000 :null, props.play, props.reset)
+	useInterval(()=>{
+	 if(secondsToTime(time) === "00:00" && props.play){
+			console.log("called")
+			audioRef.current.play()
+			setSessionRunning(!sessionRunning)
+				sessionRunning? setDisplayBreak(props.break.break*60*1000):setDisplaySession((props.session.session*60*1000))
+		}
+	// console.log("second interval called")
+	}, props.play?(sessionRunning ? props.session.session*60*1000: props.break.break*60*1000):null, props.play,props.reset,sessionRunning)
+	
+	
+	
+	return (
+			<div style={{ display: "flex", flexDirection: "column",width: 300, textAlign:"center" }}>
+				<div className="CustomDisplay" id="time-left">{secondsToTime(time)}</div>
+				<h3 style={{ color: "white", fontSize: 24 }} id="timer-label">{props.label}</h3>
+				<audio id="beep" ref={audioRef} ><source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"></source> </audio>
+			</div>
+		);
+	};
+	
+	
 
 export default Timer;
 

@@ -8,6 +8,7 @@ const CustomResetButton = (props) => {
     setAnimation(!animation);
     props.setReset(true);
     props.setPlay(false);
+		props.setLabel("Session")
     props.breakDispatch({ type: "resetBreak", payload: props.intialBreak });
     props.sessionDispatch({
       type: "resetSession",

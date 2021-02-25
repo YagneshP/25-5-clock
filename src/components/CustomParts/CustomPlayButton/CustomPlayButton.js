@@ -12,8 +12,7 @@ const CustomPlayButton = (props) => {
     <Spring
       from={{ transform: "translate(0px, 0px) rotate(315deg)", height: "50px" }}
       to={{ transform: "translate(10px, 17px)rotate(315deg)", height: "31px" }}
-      // reset="true"
-      // ,
+
     >
       {(props) => (
         <button
