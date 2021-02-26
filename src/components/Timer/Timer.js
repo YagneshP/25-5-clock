@@ -10,45 +10,41 @@ const Timer = (props) => {
 	const[time, setTime] = React.useState(null)
 	
 	React.useEffect(()=>{
-		 setDisplaySession((props.session.session*60*1000))
-		 setDisplayBreak((props.break.break*60*1000));
-		
-		if(props.reset){
-		setSessionRunning(true)
+		setDisplaySession((props.session.session*60*1000)-1000)
+		setDisplayBreak((props.break.break*60*1000)-1000);
 		setTime(props.session.session*60*1000)
-		audioRef.current.pause()
-		audioRef.current.currentTime = 0
-		}
-	},[props.session.session, props.break.break,props.reset])
-		
-	React.useEffect(()=>{
-	sessionRunning?setTime(displaySession):setTime(displayBreak)
-	},[displaySession,displayBreak,sessionRunning])
-		
-	React.useEffect(()=>{
-				sessionRunning? setTime(props.session.session*60*1000) : setTime(props.break.break*60*1000)
-				sessionRunning? props.setLabel("Session") : props.setLabel("Break")
-		},[sessionRunning])
+	 if(props.reset){
+		props.setLabel("Session")
+	 setSessionRunning(true)
+	 audioRef.current.pause()
+	 audioRef.current.currentTime = 0
+	 }
+ },[props.session.session, props.break.break,props.reset])
+
+
+	useEffect(()=>{
+    if(secondsToTime(time) === "00:00" && props.play){
+		  audioRef.current.play()
+	    setSessionRunning(!sessionRunning)
+	   }
+  },[time])
+
+  useInterval(()=>{
+    if(sessionRunning === true && secondsToTime(time) !== "00:00" && props.play && !props.reset ){
+        setDisplaySession(prevSes=> prevSes - 1000 )
+        setTime(displaySession)
+      }
+    else if(sessionRunning === false && secondsToTime(time) !== "00:00" && props.play  && !props.reset  ){
+        setDisplayBreak(prevBreak=> prevBreak - 1000)
+        setTime(displayBreak)
+	    }
+    else if(secondsToTime(time) === "00:00" && props.play){
+      sessionRunning? props.setLabel("Session"):props.setLabel("Break")
+      sessionRunning? setDisplaySession((props.session.session*60*1000)-1000):setDisplayBreak((props.break.break*60*1000)-1000)
+      sessionRunning? setTime(props.session.session*60*1000):setTime(props.break.break*60*1000)
+	}
+}, props.play ? 1000 : null, props.reset)
 	
-	useInterval(()=>{
-	 if(sessionRunning === true && secondsToTime(time) !== "00:00" && props.play){
-			setDisplaySession(prevSes=> prevSes - 1000 )
-			setTime(displaySession) 
-		}
-	 else if(sessionRunning === false && secondsToTime(time) !== "00:00" && !props.reset){
-			setDisplayBreak(prevBreak=> prevBreak - 1000)
-			setTime(displayBreak)
-		}
-	}, props.play ? 1000 :null, props.play, props.reset)
-	useInterval(()=>{
-	 if(secondsToTime(time) === "00:00" && props.play){
-			console.log("called")
-			audioRef.current.play()
-			setSessionRunning(!sessionRunning)
-				sessionRunning? setDisplayBreak(props.break.break*60*1000):setDisplaySession((props.session.session*60*1000))
-		}
-	// console.log("second interval called")
-	}, props.play?(sessionRunning ? props.session.session*60*1000: props.break.break*60*1000):null, props.play,props.reset,sessionRunning)
 	
 	
 	

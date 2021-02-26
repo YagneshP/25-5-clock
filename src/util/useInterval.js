@@ -1,36 +1,28 @@
 import React, { useState, useEffect, useRef } from "react";
 
-function useInterval(callback, delay, play, reset,session) {
-  const savedCallback = useRef();
-  const savedPlay = useRef();
-	const savedReset = React.useRef();
-	const savedSession = React.useRef();
- useEffect(() => {
-    savedCallback.current = callback;
-    savedPlay.current = play;
-		savedReset.current = reset
-		savedSession.current = session
-  }, [callback, play, reset,session]);
-
-  // Set up the interval.
+function useInterval(callback, delay, reset) {
+  const savedCallback = React.useRef();
+  const intervalId = React.useRef(null);
+  const clear = React.useCallback(() => clearInterval(intervalId.current), []);
+  const savedReset = React.useRef();
+// Remember the latest callback.
   React.useEffect(() => {
-    function tick() {
+    savedCallback.current = callback;
+    savedReset.current = reset
+  }, [callback, reset]);
+
+// Set up the interval.
+  React.useEffect(() => {
+    function tick() { 
       savedCallback.current();
     }
-	
-    if (delay !== null  ) {
+   if (intervalId.current) clear();
+   if (delay !== null || reset !== savedReset.current ) {
 			console.log("click changed")
-      let id = setInterval(tick, delay);
-			if(!reset || session !== savedSession.current){
-				return () =>{
-					console.log("cleared",id)
-					clearInterval(id);
-				} 
-			}
-     
+      intervalId.current = setInterval(tick, delay);
+		  return clear;
     }
-  }, [delay, play, reset,session]);
+  }, [delay, clear, reset]);
 }
-
 
 export default useInterval;
