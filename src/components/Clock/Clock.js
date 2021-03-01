@@ -67,22 +67,26 @@ const Clock = () => {
   const handleBreakIncrement = () => {
     if (breakTime < 60) {
       setBreakTime((prevBreak) => prevBreak + 1);
+			setReset(false);
     }
   };
   const handleBreakDecrement = () => {
     if (breakTime > 1) {
       setBreakTime((prevBreak) => prevBreak - 1);
+			setReset(false);
     }
   };
 
   const handleSessionIncrement = () => {
     if (session < 60) {
       setSession((prevSession) => prevSession + 1);
+			setReset(false);
     }
   };
   const handleSessionDecrement = () => {
     if (session > 1) {
       setSession((prevSession) => prevSession - 1);
+			setReset(false);
     }
   };
   const handlePlay = () => {

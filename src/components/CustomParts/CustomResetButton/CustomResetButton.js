@@ -3,7 +3,7 @@ import "./CustomResetButton.css";
 import { Spring } from "react-spring/renderprops";
 import {useMediaQuery} from "../../../util/useMedia"
 const CustomResetButton = (props) => {
-  const{handleReset,id,reset,play} = props
+  const{handleReset,id,play} = props
 	const media = useMediaQuery('(max-width:600px)')
   return (
     <Spring
@@ -14,7 +14,7 @@ const CustomResetButton = (props) => {
     >
       {(animationStyle) => (
         <button
-          style={reset? animationStyle : null}
+          style={props.reset? animationStyle : null}
           className="CustomResetButton"
           onClick={handleReset}
 					id={id}
