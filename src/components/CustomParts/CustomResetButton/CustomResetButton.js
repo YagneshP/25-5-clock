@@ -1,30 +1,23 @@
 import React, { useState } from "react";
 import "./CustomResetButton.css";
 import { Spring } from "react-spring/renderprops";
-
+import {useMediaQuery} from "../../../util/useMedia"
 const CustomResetButton = (props) => {
-  const [animation, setAnimation] = useState(false);
-  const handleClick = () => {
-    setAnimation(!animation);
-    props.setReset(true);
-    props.setPlay(false);
-		props.setLabel("Session")
-    props.breakDispatch({ type: "resetBreak", payload: props.intialBreak });
-    props.sessionDispatch({
-      type: "resetSession",
-      payload: props.intialSession,
-    });
-  };
+  const{handleReset,id,reset,play} = props
+	const media = useMediaQuery('(max-width:600px)')
   return (
     <Spring
-      from={{ transform: "translate(0px, 0px) rotate(45deg)", height: "50px" }}
-      to={{ transform: "translate(-10px, 17px)rotate(45deg)", height: "31px" }}
+      from={!media?{ transform: "translate(0px, 0px) rotate(45deg)", height: "51px" }:{transform: "translate(0px, 0px) rotate(45deg)", height: "40px"}}
+      to={!media?{ transform: "translate(-10px, 17px)rotate(45deg)", height: "31px" }:{ transform: "translate(0px, 8px)rotate(45deg)", height: "31px" }}
+			reset={true}
+			reverse={true}
     >
       {(animationStyle) => (
         <button
-          style={animation ? animationStyle : null}
+          style={reset? animationStyle : null}
           className="CustomResetButton"
-          onClick={handleClick}
+          onClick={handleReset}
+					id={id}
         ></button>
       )}
     </Spring>

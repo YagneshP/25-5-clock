@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import "./CustomPlayButton.css";
 import { Spring } from "react-spring/renderprops";
+import {useMediaQuery} from "../../../util/useMedia"
+
 const CustomPlayButton = (props) => {
-  const [animation, setAnimation] = useState(false);
-  const handleClick = () => {
-    setAnimation(!animation);
-    props.setPlay(!props.play);
-		props.setReset(false);
-  };
+  const { handlePlay, id , play} = props;
+	const media = useMediaQuery('(max-width:600px)')
+
   return (
     <Spring
-      from={{ transform: "translate(0px, 0px) rotate(315deg)", height: "50px" }}
-      to={{ transform: "translate(10px, 17px)rotate(315deg)", height: "31px" }}
 
+      from={!media?{ transform: "translate(0px, 0px) rotate(315deg)", height: "50px" }:{ transform: "translate(0px, 0px) rotate(315deg)", height: "40px" }} 
+      to={!media?{ transform: "translate(10px, 17px)rotate(315deg)" , height: "31px"}:{ transform: "translate(3px, 8px)rotate(315deg)" , height: "31px"}}
     >
-      {(props) => (
+      {(animeProps) => (
         <button
-          style={animation ? props : null}
-          onClick={handleClick}
+          style={play ? animeProps : null}
+          onClick={handlePlay}
           className="CustomPlayButton"
+          id={id}
         ></button>
       )}
     </Spring>

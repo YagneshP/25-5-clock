@@ -6,51 +6,29 @@ import {
 } from "../CustomParts/CustomTriangleButton/CustomTriangleButton";
 
 const Break = (props) => {
-  const { state, dispatch, play } = props;
-  const handleIncrement = () => {
-    if (state.break < 60) {
-      dispatch({ type: "incBreak" });
-    }
-  };
-  const handleDecrement = () => {
-    if (state.break > 1) {
-      dispatch({ type: "decBreak" });
-    }
-  };
+  const { handleBreakDecrement, handleBreakIncrement, breakTime, play } = props;
   return (
     <div
       id="break-label"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-around",
-        width: 250,
-        alignItems: "center",
-      }}
+      style={{flexDirection: "column"}}
+			className="Container"
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          width: 250,
-          alignItems: "center",
-        }}
-      >
+      <div className="Container">
         <CustomTriangleUpButton
           id="break-increment"
-          handleIncrement={handleIncrement}
+          handleIncrement={handleBreakIncrement}
           disabled={play}
         />
         <div style={{ width: 100 }} id="break-length">
-          <CustomDisplay value={state.break} />
+          <CustomDisplay value={breakTime} />
         </div>
         <CustomTriangleDownButton
-          handleDecrement={handleDecrement}
-          id={"break-decrement"}
+          id="break-decrement"
+          handleDecrement={handleBreakDecrement}
           disabled={play}
         />
       </div>
-      <h3 style={{ color: "white", fontSize: 24 }}>Break-Length</h3>
+      <h3 className="Label">Break-Length</h3>
     </div>
   );
 };

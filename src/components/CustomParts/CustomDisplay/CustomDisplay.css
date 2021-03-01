@@ -10,3 +10,11 @@
   box-sizing: border-box;
   padding-top: 10px;
 }
+
+
+@media screen and (max-width:600px) {
+	.CustomDisplay{
+		height:50px;
+		font-size: 24px;
+	}
+}

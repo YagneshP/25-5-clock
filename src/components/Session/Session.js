@@ -6,51 +6,35 @@ import {
 } from "../CustomParts/CustomTriangleButton/CustomTriangleButton";
 
 const Session = (props) => {
-  const { state, dispatch, play } = props;
-  const handleIncrement = () => {
-    if (state.session < 60) {
-      dispatch({ type: "incSession" });
-    }
-  };
-  const handleDecrement = () => {
-    if (state.session > 1) {
-      dispatch({ type: "decSession" });
-    }
-  };
+  const {
+    handleSessionIncrement,
+    handleSessionDecrement,
+    play,
+    session,
+  } = props;
+
   return (
     <div
       id="session-label"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-around",
-        width: 250,
-        alignItems: "center",
-      }}
+      style={{ flexDirection: "column"}}
+			className="Container"
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          width: 250,
-          alignItems: "center",
-        }}
-      >
+      <div className="Container" >
         <CustomTriangleUpButton
-          id={"session-increment"}
-          handleIncrement={handleIncrement}
+          id="session-increment"
+          handleIncrement={handleSessionIncrement}
           disabled={play}
         />
         <div style={{ width: 100 }}>
-          <CustomDisplay value={state.session} />
+          <CustomDisplay value={session} />
         </div>
         <CustomTriangleDownButton
-          id={"session-decrement"}
-          handleDecrement={handleDecrement}
+          id="session-decrement"
+          handleDecrement={handleSessionDecrement}
           disabled={play}
         />
       </div>
-      <h3 style={{ color: "white", fontSize: 24 }}>Session-Length</h3>
+      <h3 className="Label">Session-Length</h3>
     </div>
   );
 };

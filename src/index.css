@@ -13,7 +13,38 @@ code {
     monospace;
 }
 
-#reset {
-  position: absolute;
-  top: 25px;
+.Container{
+	display: flex;
+	justify-content: space-around;
+	width: 15.6rem;
+	align-items: center;
+}
+.Label{
+  color: #ffffff;
+  font-size: 24px;
+}
+.Title{
+	color: #ffffff; 
+	font-size: 36px;
+}
+.Timer{
+		display: flex;
+		flex-direction: column;
+		width: 18.75rem;
+		text-align: center
+}
+
+@media screen and (max-width:600px){
+	.Title{
+		font-size: 24px;
+	}
+	.Label{
+		font-size:16px;
+	}
+	.Container{
+		width: 130px;
+	}
+.Timer{
+	width:175px;
+}
 }

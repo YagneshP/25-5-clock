@@ -1,6 +1,6 @@
 .Clock {
-  width: 550px;
-  height: 550px;
+  width: 35rem;
+  height: 35rem;
   border-radius: 50%;
   background-color: black;
   position: relative;
@@ -9,4 +9,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width:600px) {
+	.Clock{
+		width: 300px;
+		height:300px
+	}
 }

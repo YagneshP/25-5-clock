@@ -22,7 +22,7 @@ export const CustomTriangleDownButton = (props) => {
       onClick={props.handleDecrement}
       disabled={disabled ? true : null}
     >
-      <i className="fas fa-caret-down fa-5x Triangle" id={props.id}></i>
+      <i className="fas fa-caret-down Triangle" id={props.id}></i>
     </button>
   );
 };

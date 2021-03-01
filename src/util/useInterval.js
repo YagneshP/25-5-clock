@@ -1,28 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 
-function useInterval(callback, delay, reset) {
-  const savedCallback = React.useRef();
-  const intervalId = React.useRef(null);
-  const clear = React.useCallback(() => clearInterval(intervalId.current), []);
-  const savedReset = React.useRef();
-// Remember the latest callback.
-  React.useEffect(() => {
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+  const intervalId = useRef(null);
+  const clear = useCallback(() => clearInterval(intervalId.current), []);
+  // Remember the latest callback.
+  useEffect(() => {
     savedCallback.current = callback;
-    savedReset.current = reset
-  }, [callback, reset]);
+  }, [callback]);
 
-// Set up the interval.
-  React.useEffect(() => {
-    function tick() { 
+  // Set up the interval.
+  useEffect(() => {
+    function tick() {
       savedCallback.current();
     }
-   if (intervalId.current) clear();
-   if (delay !== null || reset !== savedReset.current ) {
-			console.log("click changed")
+    if (intervalId.current) clear();
+    if (delay !== null) {
       intervalId.current = setInterval(tick, delay);
-		  return clear;
+      return clear;
     }
-  }, [delay, clear, reset]);
+  }, [delay, clear]);
 }
 
 export default useInterval;

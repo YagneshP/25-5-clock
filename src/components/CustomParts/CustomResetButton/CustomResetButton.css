@@ -1,7 +1,7 @@
 .CustomResetButton {
   position: relative;
   position: absolute;
-  height: 50px;
+  height: 51px;
   width: 50px;
   background-color: rgb(213, 213, 213);
   transform: rotate(45deg);
@@ -40,4 +40,21 @@
   font-variant: normal;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
+}
+
+
+@media screen and (max-width:600px) {
+	.CustomResetButton {
+		height: 40px;
+		width: 40px;
+		top: 12px;
+		right: 10px;
+	}
+	.CustomResetButton::before {
+		font-size: 15px;
+		width: 65px;
+		height: 25px;
+		top: 0px;
+		right: -12.5px;
+	}
 }
